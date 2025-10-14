@@ -3,7 +3,7 @@
         "TrainingImage": "673538733896.dkr.ecr.ap-southeast-1.amazonaws.com/abalone:latest",
         "TrainingInputMode": "File"
     },
-    "RoleArn": "arn:aws:iam:::role/MLOps",
+    "RoleArn": "arn:aws:iam:::role/mlops",
     "OutputDataConfig": {
         "S3OutputPath": ""
     },
