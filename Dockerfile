@@ -1,6 +1,4 @@
-ARG REGION
-
-FROM 763104351884.dkr.ecr.${REGION}.amazonaws.com/tensorflow-training:2.6.0-cpu-py38-ubuntu20.04-v1.0
+FROM public.ecr.aws/deep-learning-containers/tensorflow-training:2.18.0-cpu-py310-ubuntu22.04-ec2-v1.39
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     nginx \
@@ -11,7 +9,10 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -U \
     flask \
     gevent \
-    gunicorn
+    gunicorn \
+    pandas \
+    numpy \
+    scikit-learn
 
 RUN mkdir -p /opt/program
 RUN mkdir -p /opt/ml
