@@ -40,7 +40,7 @@ Resources:
     Properties:
       PrimaryContainer:
         ModelPackageName: !Ref ModelPackageName
-      ExecutionRoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOps
+      ExecutionRoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOpsPipelineRole
 
   EndpointConfig:
     Type: AWS::SageMaker::EndpointConfig
@@ -90,7 +90,7 @@ Resources:
               InstanceCount: 1
               InstanceType: ml.m5.large
               VolumeSizeInGB: 50
-          RoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOps
+          RoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOpsPipelineRole
         ScheduleConfig:
           ScheduleExpression: cron(0 * ? * * *)
       MonitoringScheduleName: !Sub ${ModelName}MonitoringSchedule
@@ -101,7 +101,7 @@ Resources:
       MaxCapacity: !Ref EndpointMaxCapacity
       MinCapacity: !Ref EndpointInstanceCount
       ResourceId: !Sub endpoint/${Endpoint.EndpointName}/variant/AllTraffic
-      RoleARN: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOps
+      RoleARN: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOpsPipelineRole
       ScalableDimension: sagemaker:variant:DesiredInstanceCount
       ServiceNamespace: sagemaker
     DependsOn: Endpoint

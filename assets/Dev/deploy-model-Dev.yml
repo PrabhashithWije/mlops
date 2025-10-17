@@ -38,7 +38,7 @@ Resources:
       PrimaryContainer:
         Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ImageRepoName}:${ImageTagName}
         ModelDataUrl: !Sub s3://mlops-${AWS::Region}-${AWS::AccountId}/${TrainJobId}/mlops-${ModelName}-${TrainJobId}/output/model.tar.gz
-      ExecutionRoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOps
+      ExecutionRoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/MLOpsPipelineRole
   
   EndpointConfig:
     Type: AWS::SageMaker::EndpointConfig
